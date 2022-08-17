@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("안농");
 
         edtTextID = findViewById(R.id.edtTextID);
         edtTextPW = findViewById(R.id.edtTextPW);
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // 로그인 버튼 클릭시 (저장된 데이터로 로그인을 해야되는데 데이터 저장 어케하누...)
+        // 로그인 버튼 클릭시
         BtnLogin = findViewById(R.id.BtnLogin);
         BtnLogin.setOnClickListener(v -> {
             String UserID = edtTextID.getText().toString();
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                         String userID = jsonResponse.getString("userID");
                         String userPW = jsonResponse.getString("userPW");
                         Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, Main_page.class);
                         intent.putExtra("userID",userID);
                         intent.putExtra("userPW",userPW);
                         startActivity(intent);
@@ -69,11 +70,3 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 }
-      // 사용자가 send 버튼을 눌렀을 때 호출됨
-//    public void sendMessage(View view){
-//        Intent intent = new Intent(this, DisplayMessageActivity.class);
-//        EditText editText = (EditText) findViewById(R.id.editText);
-//        String msg = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
-//    }
